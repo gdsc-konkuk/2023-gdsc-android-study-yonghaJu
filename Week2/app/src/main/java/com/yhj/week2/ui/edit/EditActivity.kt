@@ -19,9 +19,10 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityEditBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         binding.lifecycleOwner = this
         binding.vm = viewModel
-        setContentView(binding.root)
 
         collectEvent()
     }

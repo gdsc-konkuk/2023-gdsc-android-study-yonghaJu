@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_create_todo" />
     <fragment
         android:id="@+id/myPageFragment"
-        android:name="com.yhj.week2.MyPageFragment"
+        android:name="com.yhj.week2.ui.mypage.MyPageFragment"
         android:label="fragment_mypage"
         tools:layout="@layout/fragment_mypage" />
 </navigation>
