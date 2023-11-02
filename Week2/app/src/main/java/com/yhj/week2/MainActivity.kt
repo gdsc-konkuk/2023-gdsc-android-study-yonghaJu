@@ -23,5 +23,9 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
         bottomNav.setupWithNavController(navController)
+
+        fabCreateTodo.setOnClickListener {
+            navController.navigate(R.id.action_homeFragment_to_createTodoFragment)
+        }
     }
 }
