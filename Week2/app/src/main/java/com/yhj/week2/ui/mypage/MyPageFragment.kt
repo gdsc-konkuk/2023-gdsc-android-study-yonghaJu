@@ -6,12 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import com.yhj.week2.collectWhenStarted
 import com.yhj.week2.databinding.FragmentMypageBinding
 import com.yhj.week2.ui.edit.EditActivity
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyPageFragment : Fragment() {
@@ -34,14 +31,11 @@ class MyPageFragment : Fragment() {
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.eventFlow.collect {
-                    startActivity(Intent(requireContext(), EditActivity::class.java))
-                }
-            }
+        viewLifecycleOwner.collectWhenStarted(viewModel.eventFlow) {
+            startActivity(Intent(requireContext(), EditActivity::class.java))
         }
     }
+
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()

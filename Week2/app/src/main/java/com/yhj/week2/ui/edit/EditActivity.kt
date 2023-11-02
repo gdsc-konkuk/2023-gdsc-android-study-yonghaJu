@@ -2,12 +2,9 @@ package com.yhj.week2.ui.edit
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.snackbar.Snackbar
+import com.yhj.week2.collectWhenStarted
 import com.yhj.week2.databinding.ActivityEditBinding
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EditActivity : AppCompatActivity() {
@@ -28,12 +25,8 @@ class EditActivity : AppCompatActivity() {
     }
 
     private fun collectEvent() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.eventFlow.collect { event ->
-                    handleEvent(event)
-                }
-            }
+        collectWhenStarted(viewModel.eventFlow) { event ->
+            handleEvent(event)
         }
     }
 

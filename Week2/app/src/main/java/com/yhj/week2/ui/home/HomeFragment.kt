@@ -5,12 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import com.yhj.week2.collectWhenStarted
 import com.yhj.week2.databinding.FragmentHomeBinding
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -35,12 +31,8 @@ class HomeFragment : Fragment() {
 
         binding.lvTodoItem.adapter = todoAdapter
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.todoList.collectLatest { todoList ->
-                    todoAdapter.submitList(todoList)
-                }
-            }
+        viewLifecycleOwner.collectWhenStarted(viewModel.todoList) { todoList ->
+            todoAdapter.submitList(todoList)
         }
     }
 
