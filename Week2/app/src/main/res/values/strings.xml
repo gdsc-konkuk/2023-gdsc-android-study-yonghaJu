@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Week2</string>
+
+    <string name="username">주용한</string>
+    <string name="user_email">ju990828@naver.com</string>
+
+    <string name="title_mod_my_info">내 정보 수정</string>
+    <string name="title_major">건국대학교 컴퓨터공학부</string>
+    <string name="title_mypage">마이페이지</string>
+    <string name="title_organization">소속 단체</string>
+
+    <string name="about_chapter">GDSC: Android</string>
+    <string name="about_mod_info">수정할 내용</string>
+
+    <string name="btn_recent_noti">최근 알림</string>
+    <string name="btn_mod_my_info">내 정보 수정하기</string>
+    <string name="btn_notification">공지 사항</string>
+    <string name="btn_logout">로그아웃</string>
+    <string name="btn_delete_account">회원 탈퇴</string>
+    <string name="btn_save">저장하기</string>
+    <string name="btn_select">선택하기</string>
+
+    <string name="string_proflie_Image">프로필 사진</string>
+    <string name="string_nick_name">닉네임</string>
+    <string name="string_version">버전</string>
+    <string name="string_version_target">1.0.1</string>
 </resources>
