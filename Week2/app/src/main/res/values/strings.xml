@@ -26,4 +26,5 @@
     <string name="string_version_target">1.0.1</string>
     <string name="bottom_nav_title_home">Home</string>
     <string name="bottom_nav_title_mypage">MyPage</string>
+    <string name="title_home">용이의 투두리스트</string>
 </resources>
