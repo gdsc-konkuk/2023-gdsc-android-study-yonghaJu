@@ -8,15 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yhj.gdscandroidstudy.databinding.ItemTodoBinding
 import com.yhj.gdscandroidstudy.domain.TodoItem
 
-class TodoAdapter(private val onCheck: (TodoItem) -> Unit) :
+class TodoAdapter(private val onCheckTodoItem: (TodoItem) -> Unit) :
     ListAdapter<TodoItem, TodoAdapter.ViewHolder>(diffUtil) {
-    inner class ViewHolder(private val binding: ItemTodoBinding) :
+    class ViewHolder(
+        private val binding: ItemTodoBinding,
+        private val onCheckTodoItem: (TodoItem) -> Unit,
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(todoItem: TodoItem) {
             binding.item = todoItem
-            println(todoItem)
+            binding.executePendingBindings()
             binding.root.setOnClickListener {
-                onCheck(todoItem)
+                onCheckTodoItem(todoItem)
             }
         }
     }
@@ -28,6 +31,7 @@ class TodoAdapter(private val onCheck: (TodoItem) -> Unit) :
                 parent,
                 false,
             ),
+            onCheckTodoItem,
         )
     }
 

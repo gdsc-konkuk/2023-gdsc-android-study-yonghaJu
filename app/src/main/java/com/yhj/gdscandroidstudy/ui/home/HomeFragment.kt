@@ -15,8 +15,6 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
 
-    private val todoAdapter = TodoAdapter { item -> viewModel.clickItem(item) }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,6 +27,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val todoAdapter = TodoAdapter { item -> viewModel.clickItem(item) }
+
         binding.lvTodoItem.adapter = todoAdapter
 
         viewLifecycleOwner.collectWhenStarted(viewModel.todoList) { todoList ->
@@ -36,8 +36,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
         _binding = null
+        super.onDestroyView()
     }
 }
