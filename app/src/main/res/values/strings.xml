@@ -27,4 +27,5 @@
     <string name="bottom_nav_title_home">Home</string>
     <string name="bottom_nav_title_mypage">MyPage</string>
     <string name="title_home">용이의 투두리스트</string>
+    <string name="string_completed_todo">완료한 투두 : %1$d개</string>
 </resources>

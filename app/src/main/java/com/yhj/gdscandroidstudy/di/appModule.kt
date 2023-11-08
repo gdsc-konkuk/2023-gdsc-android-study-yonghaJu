@@ -18,7 +18,7 @@ import org.koin.dsl.module
 val appModule = module {
     single<UserRepository> { UserRepositoryImpl(get()) }
     viewModel { EditViewModel(get()) }
-    viewModel { MyPageViewModel(get()) }
+    viewModel { MyPageViewModel(get(), get()) }
     viewModel { HomeViewModel(get()) }
     single {
         Room.databaseBuilder(

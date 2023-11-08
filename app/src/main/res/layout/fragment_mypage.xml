@@ -108,7 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:gravity="center"
-                        android:text="완료한 투두: 2개" />
+                        android:text="@{@string/string_completed_todo(vm.completedTodoNum)}" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
