@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -57,4 +58,10 @@ dependencies {
 
     val dataStoreVersion = "1.0.0"
     implementation("androidx.datastore:datastore-preferences:$dataStoreVersion")
+
+    val roomVersion = "2.6.0"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
 }
