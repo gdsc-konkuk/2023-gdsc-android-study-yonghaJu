@@ -3,6 +3,7 @@ package com.yhj.gdscandroidstudy.ui.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yhj.gdscandroidstudy.data.UserRepository
+import com.yhj.gdscandroidstudy.util.SUBSCRIPTION_TIMEOUT
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -12,12 +13,13 @@ import kotlinx.coroutines.launch
 class EditViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     val name = userRepository.userNameFlow.stateIn(
-        viewModelScope,
-        SharingStarted.WhileSubscribed(),
-        "",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(SUBSCRIPTION_TIMEOUT),
+        initialValue = "",
     )
 
     val editableName = MutableStateFlow("")
+    private val editableNameValue get() = editableName.value
 
     init {
         viewModelScope.launch {
@@ -27,13 +29,13 @@ class EditViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     val eventFlow = MutableSharedFlow<Event>()
     fun saveName() {
-        if (editableName.value.isBlank()) {
+        if (editableNameValue.isBlank()) {
             viewModelScope.launch {
                 eventFlow.emit(Event.SavingFailed("닉네임은 빈칸일 수 없습니다."))
             }
         } else {
             viewModelScope.launch {
-                userRepository.setName(editableName.value)
+                userRepository.setName(editableNameValue)
                 eventFlow.emit(Event.SavingSuccess("닉네임 저장 성공."))
             }
         }

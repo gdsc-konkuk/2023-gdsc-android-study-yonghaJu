@@ -37,7 +37,7 @@ class EditActivity : AppCompatActivity() {
             }
 
             is Event.SavingSuccess -> {
-                binding.root.showSnackBar(event.message)
+                finish()
             }
 
             Event.BackButtonClicked -> {
