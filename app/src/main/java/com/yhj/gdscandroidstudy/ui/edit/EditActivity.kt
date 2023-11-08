@@ -2,9 +2,9 @@ package com.yhj.gdscandroidstudy.ui.edit
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
-import com.yhj.gdscandroidstudy.collectWhenStarted
 import com.yhj.gdscandroidstudy.databinding.ActivityEditBinding
+import com.yhj.gdscandroidstudy.util.collectWhenStarted
+import com.yhj.gdscandroidstudy.util.showSnackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EditActivity : AppCompatActivity() {
@@ -33,11 +33,11 @@ class EditActivity : AppCompatActivity() {
     private fun handleEvent(event: Event) {
         when (event) {
             is Event.SavingFailed -> {
-                Snackbar.make(binding.root, event.message, Snackbar.LENGTH_SHORT).show()
+                binding.root.showSnackBar(event.message)
             }
 
             is Event.SavingSuccess -> {
-                Snackbar.make(binding.root, event.message, Snackbar.LENGTH_SHORT).show()
+                binding.root.showSnackBar(event.message)
             }
 
             Event.BackButtonClicked -> {
