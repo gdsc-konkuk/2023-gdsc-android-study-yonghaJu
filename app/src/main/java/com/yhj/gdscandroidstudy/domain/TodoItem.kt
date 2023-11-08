@@ -7,9 +7,9 @@ data class TodoItem(
 ) {
     companion object {
         val DUMMY = listOf(
-            TodoItem(0, "todo1~~~"),
-            TodoItem(1, "todo2~~~"),
-            TodoItem(2, "todo3~~~"),
+            TodoItem(1, "todo1~~~", true),
+            TodoItem(2, "todo2~~~", false),
+            TodoItem(3, "todo3~~~", true),
         )
     }
 }
