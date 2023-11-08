@@ -1,4 +1,4 @@
-package com.yhj.gdscandroidstudy.data
+package com.yhj.gdscandroidstudy.data.user
 
 import kotlinx.coroutines.flow.Flow
 

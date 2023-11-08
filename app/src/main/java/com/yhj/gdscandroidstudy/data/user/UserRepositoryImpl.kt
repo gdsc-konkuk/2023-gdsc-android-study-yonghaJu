@@ -1,4 +1,4 @@
-package com.yhj.gdscandroidstudy.data
+package com.yhj.gdscandroidstudy.data.user
 
 import android.content.Context
 import androidx.datastore.core.DataStore

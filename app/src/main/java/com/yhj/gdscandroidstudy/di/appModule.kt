@@ -1,7 +1,7 @@
 package com.yhj.gdscandroidstudy.di // ktlint-disable filename
 
-import com.yhj.gdscandroidstudy.data.UserRepository
-import com.yhj.gdscandroidstudy.data.UserRepositoryImpl
+import com.yhj.gdscandroidstudy.data.user.UserRepository
+import com.yhj.gdscandroidstudy.data.user.UserRepositoryImpl
 import com.yhj.gdscandroidstudy.ui.edit.EditViewModel
 import com.yhj.gdscandroidstudy.ui.home.HomeViewModel
 import com.yhj.gdscandroidstudy.ui.mypage.MyPageViewModel
