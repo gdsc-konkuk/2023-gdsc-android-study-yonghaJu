@@ -26,11 +26,25 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
-val appModule = module {
-    single<UserRepository> { UserRepositoryImpl(get()) }
+val viewModelModule = module {
     viewModel { EditViewModel(get(), get()) }
     viewModel { MyPageViewModel(get(), get()) }
     viewModel { HomeViewModel(get()) }
+}
+
+val dataModule = module {
+    single<UserRepository> { UserRepositoryImpl(get()) }
+    single<TodoRepository> { TodoRepositoryImpl(get()) }
+    single<TodoDataSource> { TodoLocalDataSource(get()) }
+    single<PhotoRepository> { PhotoRepositoryImpl(get()) }
+}
+
+val useCaseModule = module {
+    single { SetRandomPhotoUseCase(get(), get()) }
+}
+
+val databaseModule = module {
+    single { get<AppDatabase>().todoDao() }
     single {
         Room.databaseBuilder(
             get(),
@@ -38,10 +52,10 @@ val appModule = module {
             DATABASE_NAME,
         ).build()
     }
-    single { get<AppDatabase>().todoDao() }
-    single<TodoRepository> { TodoRepositoryImpl(get()) }
-    single<TodoDataSource> { TodoLocalDataSource(get()) }
-    single<PhotoRepository> { PhotoRepositoryImpl(get()) }
+}
+
+val networkModule = module {
+    single { get<Retrofit>().create(PhotoService::class.java) }
     single {
         OkHttpClient.Builder().addInterceptor(UnSplashInterceptor()).build()
     }
@@ -53,6 +67,4 @@ val appModule = module {
             json.asConverterFactory(NETWORK.UNSPLASH.MEDIA_TYPE.toMediaType()),
         ).build()
     }
-    single { SetRandomPhotoUseCase(get(), get()) }
-    single { get<Retrofit>().create(PhotoService::class.java) }
 }
