@@ -6,9 +6,9 @@ import com.yhj.gdscandroidstudy.data.AppDatabase.Companion.DATABASE_NAME
 import com.yhj.gdscandroidstudy.data.todo.TodoDataSource
 import com.yhj.gdscandroidstudy.data.todo.TodoLocalDataSource
 import com.yhj.gdscandroidstudy.data.todo.TodoRepositoryImpl
-import com.yhj.gdscandroidstudy.data.user.UserRepository
 import com.yhj.gdscandroidstudy.data.user.UserRepositoryImpl
 import com.yhj.gdscandroidstudy.domain.TodoRepository
+import com.yhj.gdscandroidstudy.domain.UserRepository
 import com.yhj.gdscandroidstudy.ui.edit.EditViewModel
 import com.yhj.gdscandroidstudy.ui.home.HomeViewModel
 import com.yhj.gdscandroidstudy.ui.mypage.MyPageViewModel
