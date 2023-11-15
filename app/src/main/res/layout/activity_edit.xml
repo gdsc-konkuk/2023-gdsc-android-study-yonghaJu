@@ -12,8 +12,8 @@
         style="@style/Text_Body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
 
 
         <ImageView
@@ -33,10 +33,12 @@
 
 
         <androidx.appcompat.widget.AppCompatImageView
+            url="@{vm.userPhoto}"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginTop="36dp"
+            android:onClick="@{() -> vm.setRandomPhoto()}"
             android:src="@drawable/ic_konkuk" />
 
         <TextView

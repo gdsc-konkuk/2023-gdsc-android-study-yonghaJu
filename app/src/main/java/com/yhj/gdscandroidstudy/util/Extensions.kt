@@ -1,6 +1,8 @@
 package com.yhj.gdscandroidstudy.util
 
 import android.view.View
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -22,4 +24,11 @@ fun <T> LifecycleOwner.collectWhenStarted(flow: Flow<T>, block: suspend (T) -> U
 
 fun View.showSnackBar(msg: String) {
     Snackbar.make(this, msg, Snackbar.LENGTH_SHORT).show()
+}
+
+@BindingAdapter("url")
+fun ImageView.url(url: String?) {
+    url?.let {
+        GlideApp.with(this.context).load(it).into(this)
+    }
 }
