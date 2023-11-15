@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("kotlinx-serialization")
 }
 
 val properties = Properties()
@@ -22,7 +23,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "unsplash.access.key", unsplashAccessKey)
+        buildConfigField("String", "UNSPLASH_ACCESS_KEY", unsplashAccessKey)
     }
 
     buildTypes {
@@ -71,8 +72,24 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     val lifecycleVersion = "2.6.2"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+
+    val kotlinSerializationVersion = "1.6.0"
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationVersion")
+
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+
+    val kotlinSerialConverterVersion = "1.0.0"
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$kotlinSerialConverterVersion")
+
+    val okhttp3Version = "4.12.0"
+    implementation("com.squareup.okhttp3:okhttp:$okhttp3Version")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttp3Version")
+
+    val glideVersion = "4.16.0"
+    implementation("com.github.bumptech.glide:glide:$glideVersion")
+    kapt("com.github.bumptech.glide:compiler:$glideVersion")
 }
