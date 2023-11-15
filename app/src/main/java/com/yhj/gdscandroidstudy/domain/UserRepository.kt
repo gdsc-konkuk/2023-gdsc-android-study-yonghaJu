@@ -6,4 +6,7 @@ interface UserRepository {
     val userNameFlow: Flow<String>
     suspend fun userName(): String
     suspend fun setName(name: String)
+    val userPhotoUrlFlow: Flow<String?>
+    suspend fun userPhotoUrl(): String?
+    suspend fun setUserPhotoUrl(url: String)
 }

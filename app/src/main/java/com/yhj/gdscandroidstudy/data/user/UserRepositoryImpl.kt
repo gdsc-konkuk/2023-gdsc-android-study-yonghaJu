@@ -29,9 +29,24 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
         }
     }
 
+    private val userPhotoUrlKey = stringPreferencesKey(USER_PHOTO_URL)
+    override val userPhotoUrlFlow: Flow<String?> = context.dataStore.data
+        .map { preferences ->
+            preferences[userPhotoUrlKey]
+        }
+
+    override suspend fun userPhotoUrl(): String? = userPhotoUrlFlow.first()
+
+    override suspend fun setUserPhotoUrl(url: String) {
+        context.dataStore.edit { settings ->
+            settings[userPhotoUrlKey] = url
+        }
+    }
+
     companion object {
         const val DATASTORE_NAME = "userInfo"
         const val USER_NAME = "userName"
         const val USER_NAME_DEFAULT = "주용한"
+        const val USER_PHOTO_URL = "userPhotoUrl"
     }
 }
