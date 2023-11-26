@@ -3,8 +3,8 @@ package com.yhj.gdscandroidstudy.ui.mypage
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.yhj.gdscandroidstudy.data.user.UserRepository
 import com.yhj.gdscandroidstudy.domain.TodoRepository
+import com.yhj.gdscandroidstudy.domain.UserRepository
 import com.yhj.gdscandroidstudy.util.SUBSCRIPTION_TIMEOUT
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted

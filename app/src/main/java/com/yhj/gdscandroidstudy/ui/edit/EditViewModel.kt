@@ -2,7 +2,8 @@ package com.yhj.gdscandroidstudy.ui.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yhj.gdscandroidstudy.data.user.UserRepository
+import com.yhj.gdscandroidstudy.domain.SetRandomPhotoUseCase
+import com.yhj.gdscandroidstudy.domain.UserRepository
 import com.yhj.gdscandroidstudy.util.SUBSCRIPTION_TIMEOUT
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,12 +11,21 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class EditViewModel(private val userRepository: UserRepository) : ViewModel() {
+class EditViewModel(
+    private val userRepository: UserRepository,
+    private val setRandomPhotoUseCase: SetRandomPhotoUseCase,
+) : ViewModel() {
 
     val name = userRepository.userNameFlow.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(SUBSCRIPTION_TIMEOUT),
         initialValue = "",
+    )
+
+    val userPhoto = userRepository.userPhotoUrlFlow.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(SUBSCRIPTION_TIMEOUT),
+        initialValue = null,
     )
 
     val editableName = MutableStateFlow("")
@@ -44,6 +54,12 @@ class EditViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun clickBackButton() {
         viewModelScope.launch {
             eventFlow.emit(Event.BackButtonClicked)
+        }
+    }
+
+    fun setRandomPhoto() {
+        viewModelScope.launch {
+            setRandomPhotoUseCase()
         }
     }
 }
