@@ -1,7 +1,6 @@
 package com.yhj.gdscandroidstudy.ui.mypage
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.yhj.gdscandroidstudy.domain.TodoRepository
 import com.yhj.gdscandroidstudy.domain.UserRepository
@@ -29,7 +28,7 @@ class MyPageViewModel(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(SUBSCRIPTION_TIMEOUT),
                 initialValue = 0,
-            ).asLiveData()
+            )
 
     val eventFlow = MutableSharedFlow<Event>()
 
