@@ -1,7 +1,6 @@
 package com.yhj.gdscandroidstudy
 
 import com.yhj.gdscandroidstudy.fakes.FakePhotoRepository
-import com.yhj.gdscandroidstudy.fakes.FakeUserRepository
 import com.yhj.gdscandroidstudy.rules.EditViewModelTestRule
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,10 +14,7 @@ import org.junit.Test
 class EditViewModelTest {
 
     @get:Rule
-    val editViewModelTestRule = EditViewModelTestRule(
-        FakeUserRepository(),
-        FakePhotoRepository(),
-    )
+    val editViewModelTestRule = EditViewModelTestRule()
 
     @Test
     @OptIn(ExperimentalCoroutinesApi::class)

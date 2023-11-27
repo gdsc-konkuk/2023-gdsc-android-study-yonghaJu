@@ -1,8 +1,6 @@
 package com.yhj.gdscandroidstudy
 
 import com.yhj.gdscandroidstudy.domain.TodoItem
-import com.yhj.gdscandroidstudy.fakes.FakeTodoRepository
-import com.yhj.gdscandroidstudy.fakes.FakeUserRepository
 import com.yhj.gdscandroidstudy.rules.MyPageViewModelTestRule
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.collect
@@ -15,10 +13,7 @@ import org.junit.Test
 class MyPageViewModelTest {
 
     @get:Rule
-    val myPageViewModelTestRule = MyPageViewModelTestRule(
-        FakeUserRepository(),
-        FakeTodoRepository(),
-    )
+    val myPageViewModelTestRule = MyPageViewModelTestRule()
 
     @Test
     fun `todo 완료시 완료된 투두 개수 증가`() = runTest {

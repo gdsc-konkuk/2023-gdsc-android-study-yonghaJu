@@ -2,7 +2,6 @@ package com.yhj.gdscandroidstudy
 
 import app.cash.turbine.test
 import com.yhj.gdscandroidstudy.domain.TodoItem
-import com.yhj.gdscandroidstudy.fakes.FakeTodoRepository
 import com.yhj.gdscandroidstudy.rules.HomeViewModelTestRule
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
@@ -12,7 +11,7 @@ import org.junit.Test
 class HomeViewModelTest {
 
     @get:Rule
-    val homeViewModelTestRule = HomeViewModelTestRule(FakeTodoRepository())
+    val homeViewModelTestRule = HomeViewModelTestRule()
 
     @Test
     fun `뷰모델 생성 후 더미데이터 3개가 들어가 있어야 함`() = runTest {
