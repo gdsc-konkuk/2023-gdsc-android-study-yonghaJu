@@ -1,22 +1,20 @@
 package com.yhj.gdscandroidstudy.rules
 
-import com.yhj.gdscandroidstudy.domain.PhotoRepository
 import com.yhj.gdscandroidstudy.domain.SetRandomPhotoUseCase
-import com.yhj.gdscandroidstudy.domain.UserRepository
+import com.yhj.gdscandroidstudy.fakes.FakePhotoRepository
+import com.yhj.gdscandroidstudy.fakes.FakeUserRepository
 import com.yhj.gdscandroidstudy.ui.edit.EditViewModel
 import org.junit.runner.Description
 
-class EditViewModelTestRule(
-    val fakeUserRepository: UserRepository,
-    private val fakePhotoRepository: PhotoRepository,
-) : MainDispatcherRule() {
-
-    private lateinit var setRandomPhotoUseCase: SetRandomPhotoUseCase
+class EditViewModelTestRule : MainDispatcherRule() {
     lateinit var editViewModel: EditViewModel
-
+    lateinit var fakeUserRepository: FakeUserRepository
     override fun starting(description: Description) {
         super.starting(description)
-        setRandomPhotoUseCase = SetRandomPhotoUseCase(fakePhotoRepository, fakeUserRepository)
+
+        val fakePhotoRepository = FakePhotoRepository()
+        fakeUserRepository = FakeUserRepository()
+        val setRandomPhotoUseCase = SetRandomPhotoUseCase(fakePhotoRepository, fakeUserRepository)
         editViewModel = EditViewModel(
             fakeUserRepository,
             setRandomPhotoUseCase,
