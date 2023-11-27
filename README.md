@@ -242,6 +242,7 @@ class EditViewModelTest {
 
 - __캡슐화: 실제로 사용되지 않고 생성에만 필요한 fake 객체를 감춤__
 
+
     fakePhotoRepository, setRandomPhotoUseCase 같이 뷰모델 생성시에 필요하지만 직접 접근할 필요가 없는 객체들을 private 하게 감출 수 있다.
 
 ```kotlin
